@@ -1,0 +1,94 @@
+﻿<form asp-action="CrearUsuarios">
+    @*Inicio del formulario*@
+
+    @{
+        IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+    }
+
+    <div class="container w-50 vh-100">
+        <h1>Agregar Usuario</h1>
+        <br />
+        <div class="form-group row mb-4">
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblNombreUsuario", "Nombre Usuario")
+                </div>
+                <div class="col-sm-8">
+                    @Html.TextBox("NombreUsuario", "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblContra", "Contraseña")
+                </div>
+                <div class="col-sm-8">
+                    @Html.Password("password", "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblGenero", "Género")
+                </div>
+                <div class="col-sm-4">
+                    @Html.RadioButton("genero", "M", true, new { @id = "masculino" }) Masculino
+                </div>
+                <div class="col-sm-4">
+                    @Html.RadioButton("genero", "F",false, new { @id = "femenino" }) Femenino
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblDireccion", "Direccion")
+                </div>
+                <div class="col-sm-8">
+                    @Html.TextArea("Direccion", "", new { @class = "form-control", id = "idDireccion" })
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblPasatiempos", "Pasatiempos")
+                </div>
+                <div class="col-sm-2">
+                    @Html.RadioButton("pasatiempos", "Bailar") Bailar
+                </div>
+                <div class="col-sm-2">
+                    @Html.RadioButton("pasatiempos", "Correr") Correr
+                </div>
+                <div class="col-sm-2">
+                    @Html.RadioButton("pasatiempos", "Escalar") Escalar
+                </div>
+                <div class="col-sm-2">
+                    @Html.RadioButton("pasatiempos", "Peliculas") Películas
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblCurso", "Curso")
+                </div>
+                <div class="col-sm-8">
+                    @Html.DropDownList("curso", new SelectList(strList, strList.FirstOrDefault()), "--Seleccionar curso---")
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-4">
+                    @Html.Label("lblConocimientos", "Conocimientos")
+                </div>
+                <div class="col-sm-8">
+                    @Html.ListBox("conocimientos", new List<SelectListItem>{
+                    new SelectListItem{Text="C#",Value="1"},
+                    new SelectListItem{Text="ASP.NET",Value="2"},
+                    new SelectListItem{Text="ASP.NET Core",Value="3"},
+                    new SelectListItem{Text="Azure",Value="4"}
+                    })
+                </div>
+                <div class="row p-4">
+                    <input type="submit" class="btn btn-outline-dark" value="Guardar"></input>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    @*Fin del formulario*@
+</form>
